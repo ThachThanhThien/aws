@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-11",
+  "lessonId": "lesson-11",
+  "title": "Load Balancing and Auto Scaling",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What does an Elastic Load Balancer's health check accomplish?",
+      "options": [
+        { "id": "a", "text": "It routes traffic only to healthy targets, taking failed servers out of rotation" },
+        { "id": "b", "text": "It doubles the size of each server" },
+        { "id": "c", "text": "It encrypts the database" },
+        { "id": "d", "text": "It creates new AWS accounts" }
+      ],
+      "answer": "a",
+      "explanation": "Health checks let the load balancer send requests only to healthy targets, so a failed server is automatically bypassed and users stay served."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which load balancer works at Layer 7 and can route by URL path or host?",
+      "options": [
+        { "id": "a", "text": "Network Load Balancer (NLB)" },
+        { "id": "b", "text": "Application Load Balancer (ALB)" },
+        { "id": "c", "text": "Gateway Load Balancer (GWLB)" },
+        { "id": "d", "text": "None can route by path" }
+      ],
+      "answer": "b",
+      "explanation": "The Application Load Balancer operates at Layer 7 (HTTP/HTTPS) and supports content-based routing by path or host. The NLB is a Layer 4 (TCP/UDP) balancer."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "What does an Auto Scaling group do when an instance fails its health check?",
+      "options": [
+        { "id": "a", "text": "Nothing — you must fix it manually" },
+        { "id": "b", "text": "It automatically replaces the unhealthy instance to maintain the desired capacity" },
+        { "id": "c", "text": "It deletes the whole group" },
+        { "id": "d", "text": "It emails AWS support" }
+      ],
+      "answer": "b",
+      "explanation": "An ASG self-heals: it terminates unhealthy instances and launches replacements to keep the desired count across the chosen AZs."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Why must servers be stateless to scale horizontally?",
+      "options": [
+        { "id": "a", "text": "Stateless servers run faster CPUs" },
+        { "id": "b", "text": "Any instance may serve any request and instances can be added or replaced, so local session state would be lost" },
+        { "id": "c", "text": "AWS forbids storing any data" },
+        { "id": "d", "text": "It has no effect on scaling" }
+      ],
+      "answer": "b",
+      "explanation": "Horizontal scaling assumes any instance can handle any request. If session state lives on one instance, scaling out or replacing a failed instance loses it — so state belongs in a shared store."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "Adding or removing whole instances to handle load is called ____ scaling (as opposed to vertical).",
+      "answer": ["horizontal", "Horizontal"],
+      "explanation": "Horizontal scaling (scale out/in) adds or removes instances; vertical scaling (scale up/down) moves to a bigger or smaller instance type."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each scaling policy or term to its meaning.",
+      "pairs": [
+        { "left": "Target tracking", "right": "Keep a metric like CPU at a set value" },
+        { "left": "Scheduled scaling", "right": "Change capacity at known times" },
+        { "left": "Desired capacity", "right": "The instance count the ASG maintains" },
+        { "left": "Launch template", "right": "How each instance in the group is built" }
+      ],
+      "explanation": "Target tracking holds a metric at a target, scheduled scaling changes capacity by time, desired capacity is the maintained count, and the launch template defines each instance."
+    }
+  ]
+}

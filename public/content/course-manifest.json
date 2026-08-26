@@ -1,0 +1,410 @@
+[
+  {
+    "id": "lesson-01",
+    "slug": "what-is-aws-and-cloud",
+    "title": "What Is AWS and Cloud Computing?",
+    "level": "beginner",
+    "order": 1,
+    "duration": 16,
+    "file": "beginner/what-is-aws-and-cloud.md",
+    "summary": "What cloud computing is — on-demand IT resources over the internet with pay-as-you-go pricing — what Amazon Web Services offers, the three service models (IaaS, PaaS, SaaS), the deployment models (cloud, hybrid, on-premises), and an honest look at what the cloud does and does not solve.",
+    "tags": [
+      "cloud",
+      "aws",
+      "iaas",
+      "deployment-models",
+      "overview"
+    ]
+  },
+  {
+    "id": "lesson-02",
+    "slug": "aws-global-infrastructure",
+    "title": "AWS Global Infrastructure",
+    "level": "beginner",
+    "order": 2,
+    "duration": 18,
+    "file": "beginner/aws-global-infrastructure.md",
+    "summary": "How AWS is laid out physically — Regions as isolated geographic areas, Availability Zones as isolated groups of data centers inside a Region, edge locations for content delivery — and how to choose a Region based on latency, cost, compliance, and service availability.",
+    "tags": [
+      "regions",
+      "availability-zones",
+      "edge-locations",
+      "high-availability",
+      "latency"
+    ]
+  },
+  {
+    "id": "lesson-03",
+    "slug": "aws-accounts-and-free-tier",
+    "title": "AWS Accounts, Free Tier, and Billing",
+    "level": "beginner",
+    "order": 3,
+    "duration": 18,
+    "file": "beginner/aws-accounts-and-free-tier.md",
+    "summary": "What an AWS account is and why the root user must be protected, how the Free Tier lets you learn at low cost, and the billing tools — Budgets, Cost Explorer, and billing alarms — that keep pay-as-you-go spending from surprising you.",
+    "tags": [
+      "account",
+      "root-user",
+      "free-tier",
+      "budgets",
+      "billing"
+    ]
+  },
+  {
+    "id": "lesson-04",
+    "slug": "shared-responsibility-model",
+    "title": "The Shared Responsibility Model",
+    "level": "beginner",
+    "order": 4,
+    "duration": 17,
+    "file": "beginner/shared-responsibility-model.md",
+    "summary": "How security duties split between AWS and you — AWS secures the cloud itself (hardware and global infrastructure), while you secure what you put in it (your data, access, and configuration) — and how that line shifts as you move from EC2 to managed and serverless services.",
+    "tags": [
+      "security",
+      "shared-responsibility",
+      "compliance",
+      "iaas",
+      "managed-services"
+    ]
+  },
+  {
+    "id": "lesson-05",
+    "slug": "iam-fundamentals",
+    "title": "IAM Fundamentals",
+    "level": "beginner",
+    "order": 5,
+    "duration": 20,
+    "file": "beginner/iam-fundamentals.md",
+    "summary": "How AWS Identity and Access Management controls who can do what — IAM users, groups, and roles as identities, JSON policies as the rules, the deny-by-default evaluation logic where an explicit deny always wins, and why roles and least privilege beat long-term access keys.",
+    "tags": [
+      "iam",
+      "identity",
+      "policies",
+      "roles",
+      "least-privilege"
+    ]
+  },
+  {
+    "id": "lesson-06",
+    "slug": "interacting-with-aws",
+    "title": "Interacting with AWS: Console, CLI, and SDKs",
+    "level": "beginner",
+    "order": 6,
+    "duration": 18,
+    "file": "beginner/interacting-with-aws.md",
+    "summary": "The ways you operate AWS — the web Management Console for exploring, the AWS CLI for scriptable commands, SDKs for calling AWS from code, and infrastructure as code for repeatable setups — all of which drive the same signed service APIs, plus how to configure CLI credentials safely.",
+    "tags": [
+      "console",
+      "cli",
+      "sdk",
+      "credentials",
+      "automation"
+    ]
+  },
+  {
+    "id": "lesson-07",
+    "slug": "ec2-fundamentals",
+    "title": "Amazon EC2 Fundamentals",
+    "level": "beginner",
+    "order": 7,
+    "duration": 20,
+    "file": "beginner/ec2-fundamentals.md",
+    "summary": "Amazon EC2 as rentable virtual servers — the pieces you choose when launching one (AMI, instance type, key pair, security group, storage), how instances start, stop, and terminate, how you connect to them, and the fact that on EC2 you patch the operating system.",
+    "tags": [
+      "ec2",
+      "compute",
+      "ami",
+      "instance-types",
+      "security-groups"
+    ]
+  },
+  {
+    "id": "lesson-08",
+    "slug": "s3-fundamentals",
+    "title": "Amazon S3 Fundamentals",
+    "level": "beginner",
+    "order": 8,
+    "duration": 19,
+    "file": "beginner/s3-fundamentals.md",
+    "summary": "Amazon S3 as object storage — buckets with globally unique names holding unlimited objects addressed by key, its eleven-nines durability versus its availability, the private-by-default and encrypted-by-default security posture, and the basic operations for putting and getting data.",
+    "tags": [
+      "s3",
+      "object-storage",
+      "buckets",
+      "durability",
+      "security"
+    ]
+  },
+  {
+    "id": "lesson-09",
+    "slug": "vpc-and-networking",
+    "title": "VPC and Networking Fundamentals",
+    "level": "intermediate",
+    "order": 9,
+    "duration": 21,
+    "file": "intermediate/vpc-and-networking.md",
+    "summary": "How networking works on AWS — a VPC as your own isolated virtual network, subnets pinned to Availability Zones, route tables and internet/NAT gateways deciding what reaches the internet, and the crucial difference between stateful security groups and stateless network ACLs.",
+    "tags": [
+      "vpc",
+      "subnets",
+      "security-groups",
+      "network-acls",
+      "routing"
+    ]
+  },
+  {
+    "id": "lesson-10",
+    "slug": "ec2-in-depth",
+    "title": "EC2 in Depth: Storage, Images, and Pricing",
+    "level": "intermediate",
+    "order": 10,
+    "duration": 21,
+    "file": "intermediate/ec2-in-depth.md",
+    "summary": "The parts of EC2 that decide durability and cost — EBS network volumes versus ephemeral instance store, snapshots and custom AMIs for repeatable images, instance metadata and roles, and the four purchasing models (On-Demand, Savings Plans/Reserved, Spot, Dedicated) and when each fits.",
+    "tags": [
+      "ebs",
+      "instance-store",
+      "ami",
+      "spot",
+      "savings-plans"
+    ]
+  },
+  {
+    "id": "lesson-11",
+    "slug": "load-balancing-and-auto-scaling",
+    "title": "Load Balancing and Auto Scaling",
+    "level": "intermediate",
+    "order": 11,
+    "duration": 20,
+    "file": "intermediate/load-balancing-and-auto-scaling.md",
+    "summary": "How AWS spreads traffic and adjusts capacity — Elastic Load Balancing distributing requests across healthy targets in multiple AZs, Auto Scaling groups adding and removing instances to match demand, and how the two combine into an elastic, self-healing web tier.",
+    "tags": [
+      "elastic-load-balancing",
+      "auto-scaling",
+      "high-availability",
+      "elasticity",
+      "health-checks"
+    ]
+  },
+  {
+    "id": "lesson-12",
+    "slug": "s3-in-depth",
+    "title": "S3 in Depth: Storage Classes, Versioning, and Security",
+    "level": "intermediate",
+    "order": 12,
+    "duration": 21,
+    "file": "intermediate/s3-in-depth.md",
+    "summary": "Getting more from S3 — the storage classes from Standard to Glacier Deep Archive and their cost/retrieval trade-offs, lifecycle rules that move data to cheaper tiers automatically, versioning that protects against accidental loss, and the encryption and access controls that keep buckets safe.",
+    "tags": [
+      "s3",
+      "storage-classes",
+      "lifecycle",
+      "versioning",
+      "encryption"
+    ]
+  },
+  {
+    "id": "lesson-13",
+    "slug": "databases-on-aws",
+    "title": "Databases on AWS: RDS and DynamoDB",
+    "level": "intermediate",
+    "order": 13,
+    "duration": 21,
+    "file": "intermediate/databases-on-aws.md",
+    "summary": "Managed databases on AWS — Amazon RDS for relational engines with automated backups, Multi-AZ failover, and read replicas, versus Amazon DynamoDB, a serverless NoSQL key-value store designed around access patterns — and how to choose between relational and NoSQL.",
+    "tags": [
+      "rds",
+      "dynamodb",
+      "relational",
+      "nosql",
+      "multi-az"
+    ]
+  },
+  {
+    "id": "lesson-14",
+    "slug": "lambda-and-serverless",
+    "title": "AWS Lambda and Serverless",
+    "level": "intermediate",
+    "order": 14,
+    "duration": 20,
+    "file": "intermediate/lambda-and-serverless.md",
+    "summary": "What serverless really means, how AWS Lambda runs event-driven, stateless functions billed only for what they use, its limits (a 15-minute maximum and cold starts), and how Lambda combines with API Gateway and DynamoDB into a serverless application.",
+    "tags": [
+      "lambda",
+      "serverless",
+      "event-driven",
+      "api-gateway",
+      "functions"
+    ]
+  },
+  {
+    "id": "lesson-15",
+    "slug": "monitoring-with-cloudwatch",
+    "title": "Monitoring with CloudWatch and CloudTrail",
+    "level": "intermediate",
+    "order": 15,
+    "duration": 19,
+    "file": "intermediate/monitoring-with-cloudwatch.md",
+    "summary": "How you see what's happening on AWS — CloudWatch collecting metrics, logs, and alarms that react to thresholds, versus CloudTrail recording who called which API and when for audit — and why the two answer different questions.",
+    "tags": [
+      "cloudwatch",
+      "cloudtrail",
+      "metrics",
+      "alarms",
+      "observability"
+    ]
+  },
+  {
+    "id": "lesson-16",
+    "slug": "infrastructure-as-code",
+    "title": "Infrastructure as Code with CloudFormation",
+    "level": "intermediate",
+    "order": 16,
+    "duration": 20,
+    "file": "intermediate/infrastructure-as-code.md",
+    "summary": "Defining AWS resources in version-controlled templates instead of clicking — how AWS CloudFormation turns a declarative YAML/JSON template into a stack it creates, updates, and deletes as a unit, and how it compares to the AWS CDK and Terraform.",
+    "tags": [
+      "cloudformation",
+      "iac",
+      "templates",
+      "stacks",
+      "automation"
+    ]
+  },
+  {
+    "id": "lesson-17",
+    "slug": "dns-and-content-delivery",
+    "title": "DNS and Content Delivery: Route 53 and CloudFront",
+    "level": "advanced",
+    "order": 17,
+    "duration": 20,
+    "file": "advanced/dns-and-content-delivery.md",
+    "summary": "How users reach your app fast — Amazon Route 53 as managed DNS with routing policies and health-check failover, and Amazon CloudFront as a content delivery network that caches content at edge locations near users to cut latency and offload the origin.",
+    "tags": [
+      "route-53",
+      "cloudfront",
+      "dns",
+      "cdn",
+      "latency"
+    ]
+  },
+  {
+    "id": "lesson-18",
+    "slug": "decoupling-with-messaging",
+    "title": "Decoupling with SQS, SNS, and EventBridge",
+    "level": "advanced",
+    "order": 18,
+    "duration": 20,
+    "file": "advanced/decoupling-with-messaging.md",
+    "summary": "Why loosely coupled systems are more resilient and scalable, and the AWS services that decouple them — SQS queues that buffer work for one consumer, SNS topics that fan a message out to many subscribers, and EventBridge routing events to targets by rule.",
+    "tags": [
+      "sqs",
+      "sns",
+      "eventbridge",
+      "decoupling",
+      "event-driven"
+    ]
+  },
+  {
+    "id": "lesson-19",
+    "slug": "high-availability-and-dr",
+    "title": "High Availability, Fault Tolerance, and DR",
+    "level": "advanced",
+    "order": 19,
+    "duration": 21,
+    "file": "advanced/high-availability-and-dr.md",
+    "summary": "Designing systems that survive failure — high availability across Availability Zones by removing single points of failure, the meaning of RTO and RPO, and the four disaster-recovery strategies (backup and restore, pilot light, warm standby, multi-site) that trade cost against recovery speed.",
+    "tags": [
+      "high-availability",
+      "disaster-recovery",
+      "rto-rpo",
+      "multi-az",
+      "resilience"
+    ]
+  },
+  {
+    "id": "lesson-20",
+    "slug": "security-in-depth",
+    "title": "Security in Depth: KMS, Secrets, and Encryption",
+    "level": "advanced",
+    "order": 20,
+    "duration": 21,
+    "file": "advanced/security-in-depth.md",
+    "summary": "Layered security on AWS — defense in depth across network, identity, and data; encryption at rest and in transit with AWS KMS and envelope encryption; managing secrets with Secrets Manager instead of hardcoding; and the detection services (GuardDuty, WAF, Shield) that watch for threats.",
+    "tags": [
+      "kms",
+      "encryption",
+      "secrets-manager",
+      "defense-in-depth",
+      "guardduty"
+    ]
+  },
+  {
+    "id": "lesson-21",
+    "slug": "well-architected-framework",
+    "title": "The AWS Well-Architected Framework",
+    "level": "advanced",
+    "order": 21,
+    "duration": 20,
+    "file": "advanced/well-architected-framework.md",
+    "summary": "AWS's framework of best practices for building good cloud systems — its six pillars (Operational Excellence, Security, Reliability, Performance Efficiency, Cost Optimization, and Sustainability), the general design principles behind them, and how to weigh trade-offs between pillars.",
+    "tags": [
+      "well-architected",
+      "pillars",
+      "best-practices",
+      "architecture",
+      "trade-offs"
+    ]
+  },
+  {
+    "id": "lesson-22",
+    "slug": "cost-optimization",
+    "title": "Cost Optimization on AWS",
+    "level": "advanced",
+    "order": 22,
+    "duration": 20,
+    "file": "advanced/cost-optimization.md",
+    "summary": "Getting the most value per dollar on AWS — how pricing works, the big levers (right-sizing, Savings Plans and Spot, turning off idle resources, storage classes, and data-transfer awareness), and the tools that measure and attribute spend so optimization is continuous.",
+    "tags": [
+      "cost-optimization",
+      "savings-plans",
+      "right-sizing",
+      "data-transfer",
+      "finops"
+    ]
+  },
+  {
+    "id": "lesson-23",
+    "slug": "containers-on-aws",
+    "title": "Containers on AWS: ECS, EKS, and Fargate",
+    "level": "advanced",
+    "order": 23,
+    "duration": 20,
+    "file": "advanced/containers-on-aws.md",
+    "summary": "Running containers on AWS — what containers are and how they differ from virtual machines, why orchestration matters, and the AWS options: ECS for simple AWS-native orchestration, EKS for managed Kubernetes, and Fargate for running containers without managing servers.",
+    "tags": [
+      "containers",
+      "ecs",
+      "eks",
+      "fargate",
+      "orchestration"
+    ]
+  },
+  {
+    "id": "lesson-24",
+    "slug": "capstone-well-architected-web-app",
+    "title": "Capstone: Architecting a Well-Architected Web Application",
+    "level": "advanced",
+    "order": 24,
+    "duration": 24,
+    "file": "advanced/capstone-well-architected-web-app.md",
+    "summary": "A synthesis of the whole course — designing a secure, highly available, scalable, and cost-effective three-tier web application on AWS, tracing a request end to end and mapping every design choice to the six Well-Architected pillars.",
+    "tags": [
+      "capstone",
+      "architecture",
+      "well-architected",
+      "high-availability",
+      "end-to-end"
+    ]
+  }
+]

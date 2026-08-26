@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-09",
+  "lessonId": "lesson-09",
+  "title": "VPC and Networking Fundamentals",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What makes a subnet public rather than private?",
+      "options": [
+        { "id": "a", "text": "Its route table sends internet-bound traffic to an internet gateway" },
+        { "id": "b", "text": "It has more IP addresses" },
+        { "id": "c", "text": "It is in a different Region" },
+        { "id": "d", "text": "It uses a network ACL" }
+      ],
+      "answer": "a",
+      "explanation": "A subnet is public when its route table points 0.0.0.0/0 at an internet gateway. Without that route it's private — 'public' is about routing, not a checkbox."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which correctly contrasts security groups and network ACLs?",
+      "options": [
+        { "id": "a", "text": "Security groups are stateful and allow-only; network ACLs are stateless and support allow and deny" },
+        { "id": "b", "text": "Security groups are stateless; network ACLs are stateful" },
+        { "id": "c", "text": "Both are stateful and identical" },
+        { "id": "d", "text": "Network ACLs work at the instance level; security groups at the subnet level" }
+      ],
+      "answer": "a",
+      "explanation": "Security groups are stateful, instance-level, and allow-only; network ACLs are stateless, subnet-level, and support allow and deny rules evaluated in order."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "How do instances in a private subnet make outbound connections to the internet (e.g., for updates) without being reachable inbound?",
+      "options": [
+        { "id": "a", "text": "Through a NAT gateway" },
+        { "id": "b", "text": "By giving each a public IP" },
+        { "id": "c", "text": "They cannot reach the internet at all" },
+        { "id": "d", "text": "Through a network ACL" }
+      ],
+      "answer": "a",
+      "explanation": "A NAT gateway (sitting in a public subnet) lets private-subnet resources initiate outbound connections while staying unreachable from the internet inbound."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "A subnet lives in exactly ____ Availability Zone(s).",
+      "answer": ["one", "1", "One"],
+      "explanation": "Each subnet exists in a single Availability Zone, so you create subnets across multiple AZs for high availability."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Why might a connection hang after you add a network ACL that allows the inbound request?",
+      "options": [
+        { "id": "a", "text": "NACLs are stateless, so you must also allow the return (outbound) traffic" },
+        { "id": "b", "text": "NACLs block all traffic permanently" },
+        { "id": "c", "text": "Security groups override NACLs entirely" },
+        { "id": "d", "text": "The subnet ran out of IP addresses" }
+      ],
+      "answer": "a",
+      "explanation": "Network ACLs are stateless: each direction is judged independently, so the response must be explicitly allowed. Security groups, being stateful, auto-allow returns."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each networking component to its role.",
+      "pairs": [
+        { "left": "Internet gateway", "right": "Connects the VPC to the internet" },
+        { "left": "NAT gateway", "right": "Outbound-only internet for private subnets" },
+        { "left": "Route table", "right": "Maps destination ranges to targets" },
+        { "left": "Security group", "right": "Stateful firewall at the instance level" }
+      ],
+      "explanation": "The IGW connects to the internet, the NAT gateway provides outbound-only access for private subnets, route tables direct traffic, and security groups filter at the instance level."
+    }
+  ]
+}

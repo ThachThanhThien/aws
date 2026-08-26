@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-19",
+  "lessonId": "lesson-19",
+  "title": "High Availability, Fault Tolerance, and DR",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the difference between RTO and RPO?",
+      "options": [
+        { "id": "a", "text": "RTO is the maximum acceptable downtime; RPO is the maximum acceptable data loss (in time)" },
+        { "id": "b", "text": "RTO is data loss; RPO is downtime" },
+        { "id": "c", "text": "They are the same measurement" },
+        { "id": "d", "text": "Both measure cost" }
+      ],
+      "answer": "a",
+      "explanation": "RTO (Recovery Time Objective) is how long recovery may take; RPO (Recovery Point Objective) is how much data loss is acceptable, measured as time since the last usable copy."
+    },
+    {
+      "id": "q2",
+      "type": "ordering",
+      "prompt": "Order the four DR strategies from cheapest/slowest to costliest/fastest recovery.",
+      "items": [
+        { "id": "backup", "text": "Backup & Restore" },
+        { "id": "pilot", "text": "Pilot Light" },
+        { "id": "warm", "text": "Warm Standby" },
+        { "id": "active", "text": "Multi-Site Active/Active" }
+      ],
+      "answer": ["backup", "pilot", "warm", "active"],
+      "explanation": "Cost and readiness rise from Backup & Restore (cheapest, slowest) through Pilot Light and Warm Standby to Multi-Site Active/Active (costliest, near-zero RTO/RPO)."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "How is high availability usually achieved on AWS?",
+      "options": [
+        { "id": "a", "text": "By running everything in a single Availability Zone" },
+        { "id": "b", "text": "By spreading across multiple AZs with load balancing, auto scaling, and Multi-AZ databases" },
+        { "id": "c", "text": "By using a larger single server" },
+        { "id": "d", "text": "By disabling health checks" }
+      ],
+      "answer": "b",
+      "explanation": "HA removes single points of failure by spreading across multiple AZs behind a load balancer, with auto scaling and Multi-AZ databases and health checks."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Why is Multi-AZ within one Region NOT enough to protect against a Region-wide outage?",
+      "options": [
+        { "id": "a", "text": "It is enough — Multi-AZ covers Region failures too" },
+        { "id": "b", "text": "Multi-AZ covers failures within a Region; a whole-Region event needs a cross-Region DR strategy" },
+        { "id": "c", "text": "Regions never fail" },
+        { "id": "d", "text": "Multi-AZ only works for storage" }
+      ],
+      "answer": "b",
+      "explanation": "HA across AZs handles failures inside one Region. A Region-wide disaster requires disaster recovery that spans Regions (replication, failover)."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "Having more than one of a component so the loss of one doesn't stop the system is called ____.",
+      "answer": ["redundancy", "Redundancy"],
+      "explanation": "Redundancy — multiple copies of a component — is the foundation of high availability and removing single points of failure."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "A workload needs near-zero downtime and near-zero data loss across Regions, cost aside. Which DR strategy fits?",
+      "options": [
+        { "id": "a", "text": "Backup & Restore" },
+        { "id": "b", "text": "Pilot Light" },
+        { "id": "c", "text": "Multi-Site Active/Active" },
+        { "id": "d", "text": "No DR at all" }
+      ],
+      "answer": "c",
+      "explanation": "Multi-Site Active/Active runs full production in multiple Regions simultaneously, giving near-zero RTO/RPO at the highest cost — appropriate when downtime and data loss must be minimal."
+    }
+  ]
+}

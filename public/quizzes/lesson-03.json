@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-03",
+  "lessonId": "lesson-03",
+  "title": "AWS Accounts, Free Tier, and Billing",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which statement about the root user is correct?",
+      "options": [
+        { "id": "a", "text": "It has complete, unrestricted access and should be protected with MFA and rarely used" },
+        { "id": "b", "text": "It has only read-only access to the account" },
+        { "id": "c", "text": "It is the best identity to use for daily work" },
+        { "id": "d", "text": "It cannot change billing settings" }
+      ],
+      "answer": "a",
+      "explanation": "The root user has full, unrestricted access. Because it can't be scoped down, you enable MFA, avoid daily use, and don't give it access keys."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which are recommended steps for a brand-new AWS account? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Enable MFA on the root user" },
+        { "id": "b", "text": "Create a separate identity for daily work" },
+        { "id": "c", "text": "Create access keys for the root user for convenience" },
+        { "id": "d", "text": "Set an AWS Budget alert" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Enable MFA, use a separate daily identity, and set a budget. You should NOT create root access keys — that's explicitly discouraged."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "Does 'Free Tier' mean everything on AWS is free?",
+      "options": [
+        { "id": "a", "text": "Yes, all services are free for the first 12 months" },
+        { "id": "b", "text": "No — only specific services up to specific limits are free; overages and non-Free-Tier services cost money" },
+        { "id": "c", "text": "Yes, forever" },
+        { "id": "d", "text": "Only storage is ever charged" }
+      ],
+      "answer": "b",
+      "explanation": "The Free Tier covers specific services up to specific limits (12-month, always-free, and trial offers). Exceeding a limit or using another service incurs charges."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "To be alerted when your spending is forecast to exceed a threshold, you create an AWS ____.",
+      "answer": ["Budget", "budget", "Budgets", "budgets"],
+      "explanation": "AWS Budgets lets you set a cost or usage threshold and receive an email alert when you're forecast to exceed it."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each billing tool to what it does.",
+      "pairs": [
+        { "left": "AWS Budgets", "right": "Alerts you when spend/usage crosses a threshold" },
+        { "left": "Cost Explorer", "right": "Charts and breaks down past and forecast spending" },
+        { "left": "Cost allocation tags", "right": "Label resources so spend can be grouped by project" },
+        { "left": "AWS Organizations", "right": "Consolidated billing across multiple accounts" }
+      ],
+      "explanation": "Budgets alert, Cost Explorer visualizes, tags group spend by label, and Organizations consolidates billing across accounts."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "What uniquely identifies an AWS account?",
+      "options": [
+        { "id": "a", "text": "A 12-digit account ID" },
+        { "id": "b", "text": "The Region it was created in" },
+        { "id": "c", "text": "The name of the first EC2 instance" },
+        { "id": "d", "text": "Its IP address" }
+      ],
+      "answer": "a",
+      "explanation": "Every AWS account has a unique 12-digit account ID (for example, 123456789012); all its resources and charges roll up to that account."
+    }
+  ]
+}

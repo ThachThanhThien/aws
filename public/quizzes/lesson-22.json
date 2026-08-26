@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-22",
+  "lessonId": "lesson-22",
+  "title": "Cost Optimization on AWS",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which direction of data transfer usually costs money?",
+      "options": [
+        { "id": "a", "text": "Inbound data transfer from the internet" },
+        { "id": "b", "text": "Outbound data transfer to the internet and cross-Region transfer" },
+        { "id": "c", "text": "No data transfer ever costs money" },
+        { "id": "d", "text": "Only transfer within a single instance" }
+      ],
+      "answer": "b",
+      "explanation": "Inbound data transfer is generally free, while outbound to the internet and cross-Region (and some cross-AZ) transfer cost money — a common surprise on bills."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is right-sizing?",
+      "options": [
+        { "id": "a", "text": "Always choosing the largest instance to be safe" },
+        { "id": "b", "text": "Matching a resource's size to its actual usage to cut waste" },
+        { "id": "c", "text": "Deleting all resources" },
+        { "id": "d", "text": "Buying a 3-year commitment immediately" }
+      ],
+      "answer": "b",
+      "explanation": "Right-sizing matches resources to real usage (guided by CloudWatch and Compute Optimizer). Oversized, under-utilized resources are the most common waste."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which are effective cost-optimization levers? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Turn off idle non-production environments outside business hours" },
+        { "id": "b", "text": "Use Savings Plans for steady load and Spot for interruptible work" },
+        { "id": "c", "text": "Move cold data to cheaper S3 storage classes via lifecycle rules" },
+        { "id": "d", "text": "Leave unattached EBS volumes and idle Elastic IPs in place" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Turning off idle resources, using the right purchasing options, and optimizing storage all save money. Unattached EBS volumes and idle Elastic IPs still bill — clean them up."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Why should you commit to Savings Plans or Reserved Instances only after understanding your usage?",
+      "options": [
+        { "id": "a", "text": "Commitments are free to cancel anytime" },
+        { "id": "b", "text": "Commitments save money only for stable, predictable usage; committing too early risks locking in spend you can't use" },
+        { "id": "c", "text": "They make resources slower" },
+        { "id": "d", "text": "There is no reason to wait" }
+      ],
+      "answer": "b",
+      "explanation": "Savings Plans/RIs discount steady usage in exchange for a 1- or 3-year commitment. If usage isn't yet stable, you risk paying for capacity that no longer fits."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "To attribute spend to specific teams or projects, you apply cost allocation ____ to your resources.",
+      "answer": ["tags", "Tags", "tag"],
+      "explanation": "Cost allocation tags (like team, env, or project) let you group and attribute spend in Cost Explorer and billing reports."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each cost tool to what it does.",
+      "pairs": [
+        { "left": "Cost Explorer", "right": "Visualize and forecast spend" },
+        { "left": "AWS Budgets", "right": "Alert when cost/usage crosses a threshold" },
+        { "left": "Compute Optimizer", "right": "Recommend right-sizing from utilization" },
+        { "left": "Consolidated billing", "right": "Pool usage across accounts for volume discounts" }
+      ],
+      "explanation": "Cost Explorer analyzes and forecasts, Budgets alerts, Compute Optimizer recommends right-sizing, and consolidated billing (via Organizations) pools usage for discounts."
+    }
+  ]
+}

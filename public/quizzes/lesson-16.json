@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-16",
+  "lessonId": "lesson-16",
+  "title": "Infrastructure as Code with CloudFormation",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is a CloudFormation stack?",
+      "options": [
+        { "id": "a", "text": "The deployed set of resources created from a template, managed as a single unit" },
+        { "id": "b", "text": "A single EC2 instance" },
+        { "id": "c", "text": "A billing report" },
+        { "id": "d", "text": "A type of load balancer" }
+      ],
+      "answer": "a",
+      "explanation": "A stack is the collection of resources CloudFormation provisions from a template and manages together — create, update, and delete apply to the whole stack."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which are benefits of Infrastructure as Code? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Repeatable, identical environments" },
+        { "id": "b", "text": "Version-controlled, reviewable changes" },
+        { "id": "c", "text": "Easier disaster recovery by rebuilding from the template" },
+        { "id": "d", "text": "It removes the need for any AWS permissions" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "IaC gives repeatability, version control, and easy rebuilds. It does not remove permission requirements — deployments still act under IAM."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "What does a change set let you do?",
+      "options": [
+        { "id": "a", "text": "Preview exactly what a stack update will add, modify, or replace before applying it" },
+        { "id": "b", "text": "Automatically delete the stack" },
+        { "id": "c", "text": "Bypass IAM checks" },
+        { "id": "d", "text": "Convert YAML to a database" }
+      ],
+      "answer": "a",
+      "explanation": "A change set previews the effects of an update — including risky replacements — so you can confirm before applying."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "CloudFormation templates are written in YAML or ____ (the other supported format).",
+      "answer": ["JSON", "json"],
+      "explanation": "CloudFormation templates can be authored in YAML or JSON; both declaratively describe the desired resources."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "You deployed via CloudFormation, then someone edited a resource by hand in the Console. What is this called, and how do you detect it?",
+      "options": [
+        { "id": "a", "text": "A change set; detected by rollback" },
+        { "id": "b", "text": "Drift; detected by drift detection" },
+        { "id": "c", "text": "A stack policy; detected by CloudTrail only" },
+        { "id": "d", "text": "It is impossible to change resources by hand" }
+      ],
+      "answer": "b",
+      "explanation": "Manual changes to IaC-managed resources cause drift; CloudFormation's drift detection reports where the real state differs from the template."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "How does the AWS CDK relate to CloudFormation?",
+      "options": [
+        { "id": "a", "text": "It is unrelated to CloudFormation" },
+        { "id": "b", "text": "You write infrastructure in a real programming language and it synthesizes CloudFormation underneath" },
+        { "id": "c", "text": "It replaces CloudFormation with a database" },
+        { "id": "d", "text": "It only works with Terraform" }
+      ],
+      "answer": "b",
+      "explanation": "The CDK lets you define infrastructure in languages like TypeScript or Python and generates CloudFormation templates, running on the same engine."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-17",
+  "lessonId": "lesson-17",
+  "title": "DNS and Content Delivery: Route 53 and CloudFront",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How does a CDN like Amazon CloudFront reduce latency?",
+      "options": [
+        { "id": "a", "text": "It caches content at edge locations near users, serving from a nearby site instead of the origin" },
+        { "id": "b", "text": "It makes the origin server's CPU faster" },
+        { "id": "c", "text": "It compresses the internet" },
+        { "id": "d", "text": "It stores data only in one Region" }
+      ],
+      "answer": "a",
+      "explanation": "CloudFront caches content at edge locations worldwide, so requests are served from a location near the user, cutting latency and offloading the origin."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "You want the zone apex (example.com) to point at a CloudFront distribution. What do you use?",
+      "options": [
+        { "id": "a", "text": "A CNAME record" },
+        { "id": "b", "text": "A Route 53 alias record" },
+        { "id": "c", "text": "An MX record" },
+        { "id": "d", "text": "A TXT record" }
+      ],
+      "answer": "b",
+      "explanation": "CNAMEs can't sit at the zone apex; a Route 53 alias record points the apex directly at AWS resources like CloudFront or a load balancer, at no per-query cost."
+    },
+    {
+      "id": "q3",
+      "type": "match-pair",
+      "prompt": "Match each Route 53 routing policy to its purpose.",
+      "pairs": [
+        { "left": "Latency-based", "right": "Send users to the lowest-latency Region" },
+        { "left": "Weighted", "right": "Split traffic by percentage" },
+        { "left": "Failover", "right": "Switch to a secondary when a health check fails" },
+        { "left": "Geolocation", "right": "Route by the user's location" }
+      ],
+      "explanation": "Latency routing optimizes speed, weighted splits traffic, failover provides HA/DR with health checks, and geolocation routes by where the user is."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "CloudFront caches content at ____ locations around the world to serve users nearby.",
+      "answer": ["edge", "Edge"],
+      "explanation": "Edge locations are the globally distributed sites where CloudFront caches and serves content close to users."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "After a deploy, users still see old content through CloudFront. Why, and what fixes it?",
+      "options": [
+        { "id": "a", "text": "CloudFront is broken; recreate the distribution" },
+        { "id": "b", "text": "Cached objects are served until their TTL; create an invalidation or use versioned filenames" },
+        { "id": "c", "text": "Route 53 caches the whole website permanently" },
+        { "id": "d", "text": "You must switch Regions" }
+      ],
+      "answer": "b",
+      "explanation": "Caching is why a CDN is fast, but stale objects persist until TTL expires; an invalidation (or versioned asset names) forces the new content."
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "prompt": "Which can serve as a CloudFront origin? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "An S3 bucket" },
+        { "id": "b", "text": "An Application Load Balancer / EC2" },
+        { "id": "c", "text": "Any HTTP server" },
+        { "id": "d", "text": "A CloudWatch alarm" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "CloudFront can fetch from S3, an ALB/EC2, or any HTTP origin. A CloudWatch alarm is monitoring, not a content origin."
+    }
+  ]
+}

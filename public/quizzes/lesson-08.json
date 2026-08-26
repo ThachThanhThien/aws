@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-08",
+  "lessonId": "lesson-08",
+  "title": "Amazon S3 Fundamentals",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What kind of storage is Amazon S3?",
+      "options": [
+        { "id": "a", "text": "Object storage — whole objects retrieved by key, with a flat namespace" },
+        { "id": "b", "text": "A network filesystem with folders and partial edits" },
+        { "id": "c", "text": "Block storage you attach to one server as a raw disk" },
+        { "id": "d", "text": "A relational database" }
+      ],
+      "answer": "a",
+      "explanation": "S3 is object storage: you store whole objects addressed by key over HTTP(S), and its namespace is flat (prefixes only look like folders)."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is the difference between durability and availability in S3?",
+      "options": [
+        { "id": "a", "text": "They mean the same thing" },
+        { "id": "b", "text": "Durability is the likelihood data survives (isn't lost); availability is the likelihood you can access it now" },
+        { "id": "c", "text": "Durability is about speed; availability is about cost" },
+        { "id": "d", "text": "Availability is always higher than durability" }
+      ],
+      "answer": "b",
+      "explanation": "Durability is about not losing data (S3 Standard is designed for eleven nines); availability is about being able to reach it (S3 Standard targets about 99.99%)."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which statements about S3 defaults and limits are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "New buckets are private and Block Public Access is on by default" },
+        { "id": "b", "text": "New objects are encrypted at rest by default" },
+        { "id": "c", "text": "A single object can be up to 5 TB" },
+        { "id": "d", "text": "Bucket names only need to be unique within your account" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Buckets are private by default with Block Public Access on, objects are encrypted at rest by default, and objects can be up to 5 TB. Bucket names must be globally unique across all AWS accounts."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "An object's full name within its bucket is called its ____.",
+      "answer": ["key", "Key"],
+      "explanation": "The key is the object's full name (e.g., reports/2026/q1.csv); bucket + key uniquely identifies an object."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "What is the safest way to let a web app read specific files without exposing the whole bucket?",
+      "options": [
+        { "id": "a", "text": "Turn off Block Public Access for the entire bucket" },
+        { "id": "b", "text": "Use a scoped bucket policy, a presigned URL, or serve via CloudFront" },
+        { "id": "c", "text": "Email the files instead" },
+        { "id": "d", "text": "Make every object public individually" }
+      ],
+      "answer": "b",
+      "explanation": "Keep the bucket private and grant narrow access with a bucket policy, a time-limited presigned URL, or CloudFront — never open the whole bucket to the internet."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "How unique must an S3 bucket name be?",
+      "options": [
+        { "id": "a", "text": "Unique globally across all AWS accounts" },
+        { "id": "b", "text": "Unique only within your account" },
+        { "id": "c", "text": "Unique only within the Region" },
+        { "id": "d", "text": "It does not need to be unique" }
+      ],
+      "answer": "a",
+      "explanation": "Bucket names are globally unique across all AWS accounts and must be DNS-compliant, though the bucket's data lives in the Region you chose."
+    }
+  ]
+}

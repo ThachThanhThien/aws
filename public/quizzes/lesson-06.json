@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-06",
+  "lessonId": "lesson-06",
+  "title": "Interacting with AWS: Console, CLI, and SDKs",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What do the Console, CLI, and SDKs have in common?",
+      "options": [
+        { "id": "a", "text": "They all make the same signed AWS service API calls, which IAM authorizes" },
+        { "id": "b", "text": "They each use a completely different backend" },
+        { "id": "c", "text": "Only the Console can create resources" },
+        { "id": "d", "text": "They bypass IAM permission checks" }
+      ],
+      "answer": "a",
+      "explanation": "All three are front doors to the same AWS APIs. Requests are signed with credentials and then authorized by IAM regardless of which tool you use."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "You have a task you'll repeat several times a week. Which tool best fits?",
+      "options": [
+        { "id": "a", "text": "The Console, clicking through each time" },
+        { "id": "b", "text": "The AWS CLI, so it's scriptable and repeatable" },
+        { "id": "c", "text": "Emailing AWS support" },
+        { "id": "d", "text": "Nothing — repeated tasks aren't possible on AWS" }
+      ],
+      "answer": "b",
+      "explanation": "The CLI is scriptable and repeatable, which suits recurring tasks. The Console is better for exploring and one-offs."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The Python SDK for AWS is called ____.",
+      "answer": ["boto3", "Boto3", "boto"],
+      "explanation": "boto3 is the AWS SDK for Python; other languages have their own SDKs (JavaScript, Java, Go, .NET, and more)."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each tool to the situation it fits best.",
+      "pairs": [
+        { "left": "Management Console", "right": "Exploring a new service visually" },
+        { "left": "AWS CLI", "right": "A scriptable, repeatable command-line task" },
+        { "left": "SDK", "right": "Calling AWS from inside your application code" },
+        { "left": "Infrastructure as Code", "right": "Re-creating a whole environment consistently" }
+      ],
+      "explanation": "Console for exploring, CLI for repeatable commands, SDKs for code, and IaC for consistent, version-controlled environments."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "Why should you never commit AWS access keys to a repository?",
+      "options": [
+        { "id": "a", "text": "They expire immediately anyway" },
+        { "id": "b", "text": "They are powerful, long-lived secrets — anyone with the repo gains access to the account" },
+        { "id": "c", "text": "Git cannot store them" },
+        { "id": "d", "text": "It slows down the repository" }
+      ],
+      "answer": "b",
+      "explanation": "Long-term keys are powerful secrets. Committing them exposes the account; keep them in ~/.aws/ or use temporary role/SSO credentials."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Which command starts the one-time AWS CLI credential/setup process?",
+      "options": [
+        { "id": "a", "text": "aws configure" },
+        { "id": "b", "text": "aws install" },
+        { "id": "c", "text": "aws login --root" },
+        { "id": "d", "text": "aws setup keys" }
+      ],
+      "answer": "a",
+      "explanation": "`aws configure` prompts for an access key, secret key, default Region, and output format, storing them as a profile under ~/.aws/."
+    }
+  ]
+}

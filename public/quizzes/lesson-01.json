@@ -1,0 +1,77 @@
+{
+  "id": "quiz-lesson-01",
+  "lessonId": "lesson-01",
+  "title": "What Is AWS and Cloud Computing?",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which best describes cloud computing?",
+      "options": [
+        { "id": "a", "text": "On-demand delivery of IT resources over the internet with pay-as-you-go pricing" },
+        { "id": "b", "text": "A single piece of software you install on one laptop" },
+        { "id": "c", "text": "Buying and owning servers for your own data center" },
+        { "id": "d", "text": "A programming language for building websites" }
+      ],
+      "answer": "a",
+      "explanation": "Cloud computing is the on-demand delivery of compute, storage, databases, and networking over the internet, billed pay-as-you-go — not a single product or owned hardware."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each service model to what it provides.",
+      "pairs": [
+        { "left": "IaaS", "right": "Raw infrastructure like virtual servers; you manage the OS (e.g., Amazon EC2)" },
+        { "left": "PaaS", "right": "A managed platform so you focus on your code (e.g., Elastic Beanstalk)" },
+        { "left": "SaaS", "right": "Finished software you just use in a browser" }
+      ],
+      "explanation": "IaaS gives building blocks you manage, PaaS manages the servers/OS for you, and SaaS is complete software you simply use."
+    },
+    {
+      "id": "q3",
+      "type": "ordering",
+      "prompt": "Order the service models from the one where YOU manage the MOST to the one where you manage the LEAST.",
+      "items": [
+        { "id": "iaas", "text": "IaaS (infrastructure)" },
+        { "id": "paas", "text": "PaaS (platform)" },
+        { "id": "saas", "text": "SaaS (software)" }
+      ],
+      "answer": ["iaas", "paas", "saas"],
+      "explanation": "With IaaS you manage the most (OS and up); PaaS hands the servers/OS to the provider; with SaaS you manage the least — you just use the app."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which of these are genuine benefits of the cloud model as described in the lesson? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Trade capital expense (CapEx) for variable expense (OpEx)" },
+        { "id": "b", "text": "Stop guessing capacity by scaling up and down with demand" },
+        { "id": "c", "text": "It is always cheaper than on-premises no matter how you use it" },
+        { "id": "d", "text": "Provision resources on demand in minutes rather than buying hardware" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "The cloud trades CapEx for OpEx, removes the capacity guess through elasticity, and provisions in minutes. It is NOT automatically cheaper — savings require right-sizing and turning off idle resources."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "The service model that gives you virtual servers where you control the operating system is abbreviated ____ (four letters).",
+      "answer": ["IaaS", "iaas"],
+      "explanation": "IaaS (Infrastructure as a Service) provides raw infrastructure such as Amazon EC2 virtual servers, where you manage the OS and everything above it."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Why is moving a workload to AWS not automatically cheaper?",
+      "options": [
+        { "id": "a", "text": "AWS charges a fixed monthly fee regardless of usage" },
+        { "id": "b", "text": "Savings come from elasticity and right-sizing; an oversized, always-on resource just relocates the waste" },
+        { "id": "c", "text": "The cloud can only run small workloads" },
+        { "id": "d", "text": "You must buy hardware up front on AWS too" }
+      ],
+      "answer": "b",
+      "explanation": "Pay-as-you-go rewards efficiency. If you move an oversized server and never turn it off, you carry the same waste — cost savings depend on right-sizing and shutting down idle resources."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-23",
+  "lessonId": "lesson-23",
+  "title": "Containers on AWS: ECS, EKS, and Fargate",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How does a container differ from a virtual machine?",
+      "options": [
+        { "id": "a", "text": "A container shares the host OS kernel (lightweight); a VM runs its own full OS" },
+        { "id": "b", "text": "A container runs its own full OS; a VM shares the host kernel" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "A container cannot run applications" }
+      ],
+      "answer": "a",
+      "explanation": "A VM virtualizes hardware and runs a full OS each; a container virtualizes the OS and shares the host kernel as an isolated process, making it lighter and faster to start."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is AWS Fargate?",
+      "options": [
+        { "id": "a", "text": "A serverless compute engine that runs containers without you managing EC2 servers" },
+        { "id": "b", "text": "A container image registry" },
+        { "id": "c", "text": "A relational database" },
+        { "id": "d", "text": "A DNS service" }
+      ],
+      "answer": "a",
+      "explanation": "Fargate runs containers serverlessly — no EC2 cluster to provision or patch — and works with both ECS and EKS."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "When should you choose Amazon EKS over Amazon ECS?",
+      "options": [
+        { "id": "a", "text": "Always — EKS is simpler" },
+        { "id": "b", "text": "When you specifically need the Kubernetes standard, ecosystem, or portability" },
+        { "id": "c", "text": "Only for storing images" },
+        { "id": "d", "text": "Never — ECS can't run containers" }
+      ],
+      "answer": "b",
+      "explanation": "ECS is simpler and AWS-native; EKS is managed Kubernetes with more complexity, chosen when you need the Kubernetes API, ecosystem, or cross-cloud portability."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each AWS service to its role with containers.",
+      "pairs": [
+        { "left": "Amazon ECR", "right": "Store and version container images" },
+        { "left": "Amazon ECS", "right": "AWS-native container orchestrator" },
+        { "left": "Amazon EKS", "right": "Managed Kubernetes" },
+        { "left": "AWS Fargate", "right": "Run containers without managing servers" }
+      ],
+      "explanation": "ECR stores images, ECS is the AWS-native orchestrator, EKS is managed Kubernetes, and Fargate provides serverless compute for containers."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "Managing many containers across hosts — scheduling, scaling, and healing them — is called container ____.",
+      "answer": ["orchestration", "Orchestration"],
+      "explanation": "Orchestration handles scheduling, scaling, restarting, and networking many containers; ECS and EKS are orchestrators."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "A small team needs a simple always-on microservice with minimal ops and no Kubernetes requirement. What's a sensible choice?",
+      "options": [
+        { "id": "a", "text": "ECS with the Fargate launch type" },
+        { "id": "b", "text": "EKS with a self-managed cluster, because Kubernetes is popular" },
+        { "id": "c", "text": "A single Lambda with a 40-minute timeout" },
+        { "id": "d", "text": "Nothing — containers can't run services" }
+      ],
+      "answer": "a",
+      "explanation": "ECS + Fargate runs the containerized service with no servers to manage and no Kubernetes complexity — the simplest fit when Kubernetes isn't required."
+    }
+  ]
+}

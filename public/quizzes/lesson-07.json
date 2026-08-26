@@ -1,0 +1,81 @@
+{
+  "id": "quiz-lesson-07",
+  "lessonId": "lesson-07",
+  "title": "Amazon EC2 Fundamentals",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is an AMI in Amazon EC2?",
+      "options": [
+        { "id": "a", "text": "The template (operating system plus software) an instance boots from" },
+        { "id": "b", "text": "The hardware profile (vCPU and memory) of the instance" },
+        { "id": "c", "text": "The firewall attached to the instance" },
+        { "id": "d", "text": "The private SSH key" }
+      ],
+      "answer": "a",
+      "explanation": "An Amazon Machine Image is the launch template — an OS plus any preinstalled software. The hardware profile is the instance type, and the firewall is the security group."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is the difference between stopping and terminating an instance?",
+      "options": [
+        { "id": "a", "text": "They are the same" },
+        { "id": "b", "text": "Stopping keeps the EBS data and pauses compute charges; terminating permanently deletes the instance" },
+        { "id": "c", "text": "Terminating pauses charges but keeps the instance" },
+        { "id": "d", "text": "Stopping deletes the instance permanently" }
+      ],
+      "answer": "b",
+      "explanation": "Stop shuts down the OS but keeps the EBS volume and lets you start again; terminate permanently deletes the instance (and, by default, its root volume)."
+    },
+    {
+      "id": "q3",
+      "type": "ordering",
+      "prompt": "Order the main choices you make when launching an EC2 instance.",
+      "items": [
+        { "id": "ami", "text": "Choose an AMI (image)" },
+        { "id": "type", "text": "Pick an instance type (hardware)" },
+        { "id": "key", "text": "Select a key pair (login)" },
+        { "id": "sg", "text": "Set the security group (firewall)" },
+        { "id": "storage", "text": "Size the storage" }
+      ],
+      "answer": ["ami", "type", "key", "sg", "storage"],
+      "explanation": "The launch flows image → hardware → login → firewall → storage (with optional user data before launching)."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Who keeps the private key of an EC2 key pair?",
+      "options": [
+        { "id": "a", "text": "AWS keeps it on the instance" },
+        { "id": "b", "text": "You do — AWS keeps the public key; you download and store the private key" },
+        { "id": "c", "text": "It is posted publicly" },
+        { "id": "d", "text": "The security group stores it" }
+      ],
+      "answer": "b",
+      "explanation": "AWS stores the public key; you download and safeguard the private key (.pem). Lose it and you can't SSH in the normal way."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "The stateful, allow-only virtual firewall attached to an EC2 instance is called a security ____.",
+      "answer": ["group", "Group"],
+      "explanation": "A security group is a stateful, allow-only virtual firewall controlling inbound and outbound traffic for the instance."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "On EC2 (IaaS), who is responsible for patching the guest operating system?",
+      "options": [
+        { "id": "a", "text": "AWS patches it automatically" },
+        { "id": "b", "text": "You do — the guest OS is the customer's responsibility" },
+        { "id": "c", "text": "Nobody needs to patch EC2" },
+        { "id": "d", "text": "The security group patches it" }
+      ],
+      "answer": "b",
+      "explanation": "EC2 is IaaS, so under the shared responsibility model the customer patches the guest OS and applications; AWS secures the physical host underneath."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "quiz-lesson-24",
+  "lessonId": "lesson-24",
+  "title": "Capstone: Architecting a Well-Architected Web Application",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Order the components a dynamic web request passes through, from the user to the data.",
+      "items": [
+        { "id": "route53", "text": "Route 53 (DNS)" },
+        { "id": "cloudfront", "text": "CloudFront (CDN/TLS/WAF)" },
+        { "id": "alb", "text": "Application Load Balancer" },
+        { "id": "app", "text": "App tier (Auto Scaling group)" },
+        { "id": "data", "text": "Data tier (RDS/DynamoDB)" }
+      ],
+      "answer": ["route53", "cloudfront", "alb", "app", "data"],
+      "explanation": "The request resolves DNS (Route 53), hits the CDN (CloudFront), reaches the load balancer (ALB), routes to a stateless app server (ASG), which reads/writes the private data tier."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Why must the application tier be stateless in this architecture?",
+      "options": [
+        { "id": "a", "text": "So any instance can serve any request and the Auto Scaling group can add or replace instances freely" },
+        { "id": "b", "text": "Because AWS forbids storing any data" },
+        { "id": "c", "text": "To make the servers run faster CPUs" },
+        { "id": "d", "text": "It has no effect on the design" }
+      ],
+      "answer": "a",
+      "explanation": "Stateless servers let the load balancer and Auto Scaling group route to, add, or replace any instance; session state lives in ElastiCache/DynamoDB instead of on a server."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "How does the design survive an Availability Zone failure?",
+      "options": [
+        { "id": "a", "text": "It runs in a single AZ and simply restarts" },
+        { "id": "b", "text": "It spans multiple AZs, so the ALB routes to healthy servers, RDS Multi-AZ fails over, and the ASG rebuilds capacity" },
+        { "id": "c", "text": "It emails users to wait" },
+        { "id": "d", "text": "It cannot survive an AZ failure" }
+      ],
+      "answer": "b",
+      "explanation": "Multi-AZ redundancy plus self-healing (ELB health checks, RDS Multi-AZ failover, ASG replacement) turns an AZ outage into a non-event."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each design choice to the Well-Architected pillar it best serves.",
+      "pairs": [
+        { "left": "CloudFormation for all resources", "right": "Operational Excellence" },
+        { "left": "IAM roles, KMS, Secrets Manager", "right": "Security" },
+        { "left": "Multi-AZ, ELB + Auto Scaling", "right": "Reliability" },
+        { "left": "Savings Plans and right-sizing", "right": "Cost Optimization" }
+      ],
+      "explanation": "IaC serves operational excellence, identity/encryption/secrets serve security, multi-AZ and self-healing serve reliability, and commitments/right-sizing serve cost optimization."
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "prompt": "How is background work (like sending email) kept from slowing the user's request?",
+      "options": [
+        { "id": "a", "text": "It is decoupled onto SQS/SNS and processed asynchronously by Lambda" },
+        { "id": "b", "text": "The user must wait for it to finish" },
+        { "id": "c", "text": "It runs on the DNS server" },
+        { "id": "d", "text": "It is skipped entirely" }
+      ],
+      "answer": "a",
+      "explanation": "Queuing async work to SQS/SNS and processing it with Lambda lets the request return immediately while the work happens in the background."
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "prompt": "What makes a design 'well-architected' rather than merely working? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Redundancy across multiple AZs for reliability" },
+        { "id": "b", "text": "Security layers: least-privilege IAM, encryption, private subnets" },
+        { "id": "c", "text": "Monitoring, IaC, and cost controls" },
+        { "id": "d", "text": "A single instance with a hardcoded password and a public bucket" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Well-architected means deliberate choices across the pillars — reliability, security, operations, and cost. A single-AZ, hardcoded-secret, public-bucket design fails those pillars even if it runs."
+    }
+  ]
+}

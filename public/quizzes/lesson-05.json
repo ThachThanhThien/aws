@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-05",
+  "lessonId": "lesson-05",
+  "title": "IAM Fundamentals",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the key difference between an IAM user and an IAM role?",
+      "options": [
+        { "id": "a", "text": "A user has long-term credentials; a role has no long-term credentials and is assumed for temporary ones" },
+        { "id": "b", "text": "A role can only be used by the root user" },
+        { "id": "c", "text": "A user is global and a role is Regional" },
+        { "id": "d", "text": "There is no difference" }
+      ],
+      "answer": "a",
+      "explanation": "IAM users hold long-term credentials (passwords/access keys). Roles have no long-term credentials; a trusted principal assumes the role to get temporary credentials via STS."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "In IAM's evaluation logic, what happens when one policy allows an action and another explicitly denies it?",
+      "options": [
+        { "id": "a", "text": "The allow wins" },
+        { "id": "b", "text": "The explicit deny wins" },
+        { "id": "c", "text": "It depends on which was created first" },
+        { "id": "d", "text": "The action is allowed only on weekends" }
+      ],
+      "answer": "b",
+      "explanation": "Access is denied by default; an explicit Allow grants it, but an explicit Deny anywhere overrides any Allow — deny always wins."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which are elements of an IAM policy statement? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Effect (Allow or Deny)" },
+        { "id": "b", "text": "Action (which API operations)" },
+        { "id": "c", "text": "Resource (which things)" },
+        { "id": "d", "text": "Region (which Region it runs in)" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "A statement has Effect, Action, and Resource (plus optional Condition). IAM is global, so a policy statement has no Region element."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "How should an application running on an EC2 instance be given permission to read an S3 bucket?",
+      "options": [
+        { "id": "a", "text": "Hardcode long-term access keys in the application" },
+        { "id": "b", "text": "Attach an IAM role (instance profile) so it gets temporary credentials" },
+        { "id": "c", "text": "Use the root user's credentials" },
+        { "id": "d", "text": "Make the bucket public" }
+      ],
+      "answer": "b",
+      "explanation": "Attaching an IAM role to the instance gives the app temporary, automatically-rotated credentials, with no long-term secret to leak."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "Granting only the permissions actually needed and nothing more is the principle of least ____.",
+      "answer": ["privilege", "Privilege"],
+      "explanation": "Least privilege means granting the minimum permissions required, limiting the blast radius if credentials are misused."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each IAM concept to its description.",
+      "pairs": [
+        { "left": "IAM user", "right": "An identity with long-term credentials for a person or app" },
+        { "left": "IAM group", "right": "A collection of users that share attached policies" },
+        { "left": "IAM role", "right": "An identity assumed for temporary credentials" },
+        { "left": "Policy", "right": "A JSON document defining allowed or denied actions" }
+      ],
+      "explanation": "Users hold long-term credentials, groups bundle users for shared permissions, roles are assumed for temporary credentials, and policies are the JSON rules."
+    }
+  ]
+}

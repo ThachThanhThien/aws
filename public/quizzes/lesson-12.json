@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-12",
+  "lessonId": "lesson-12",
+  "title": "S3 in Depth: Storage Classes, Versioning, and Security",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the general trade-off across S3 storage classes?",
+      "options": [
+        { "id": "a", "text": "Cheaper storage generally means higher or slower retrieval" },
+        { "id": "b", "text": "Cheaper storage always means faster retrieval" },
+        { "id": "c", "text": "They differ only in durability" },
+        { "id": "d", "text": "The classes are identical in every way" }
+      ],
+      "answer": "a",
+      "explanation": "All classes share eleven-nines durability, but the cheaper the storage tier, the higher or slower the retrieval — so you match the class to access frequency and needed speed."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which storage class is best when access patterns are unknown or changing?",
+      "options": [
+        { "id": "a", "text": "S3 Glacier Deep Archive" },
+        { "id": "b", "text": "S3 Intelligent-Tiering" },
+        { "id": "c", "text": "S3 One Zone-IA" },
+        { "id": "d", "text": "S3 Standard-IA" }
+      ],
+      "answer": "b",
+      "explanation": "Intelligent-Tiering automatically moves objects between access tiers based on usage, which fits unpredictable or changing access patterns."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "How does S3 versioning protect against an accidental overwrite?",
+      "options": [
+        { "id": "a", "text": "It blocks all writes" },
+        { "id": "b", "text": "It keeps the previous version so you can restore it; deletes add a delete marker" },
+        { "id": "c", "text": "It emails you before every change" },
+        { "id": "d", "text": "It converts the object to Glacier" }
+      ],
+      "answer": "b",
+      "explanation": "With versioning on, an overwrite creates a new version while retaining the old one, and a delete adds a delete marker — so accidental changes are recoverable."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are good ways to keep S3 data secure? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Leave Block Public Access on and grant access with scoped policies" },
+        { "id": "b", "text": "Share single objects via time-limited presigned URLs" },
+        { "id": "c", "text": "Use SSE-KMS when you need audit and access control over the keys" },
+        { "id": "d", "text": "Make the bucket public so anyone can read it" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Keep buckets private, share narrowly with presigned URLs, and use SSE-KMS for auditable key control. Making the bucket public is the classic leak."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "A rule that automatically transitions objects to cheaper classes and deletes them after a set age is called a ____ rule.",
+      "answer": ["lifecycle", "Lifecycle", "life cycle"],
+      "explanation": "A lifecycle rule transitions and/or expires objects based on age, cutting cost without manual intervention."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Why should versioning be paired with a lifecycle rule that expires old versions?",
+      "options": [
+        { "id": "a", "text": "Otherwise versioning stops working" },
+        { "id": "b", "text": "Old (noncurrent) versions keep accumulating and cost storage, so expiring them controls the bill" },
+        { "id": "c", "text": "Lifecycle rules disable versioning" },
+        { "id": "d", "text": "It is required to make the bucket public" }
+      ],
+      "answer": "b",
+      "explanation": "Versioning retains every overwrite, so noncurrent versions pile up. A lifecycle rule expires them to keep storage costs from growing unbounded."
+    }
+  ]
+}

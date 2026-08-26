@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-10",
+  "lessonId": "lesson-10",
+  "title": "EC2 in Depth: Storage, Images, and Pricing",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "You stop an EC2 instance. What happens to data on its EBS volume versus its instance store?",
+      "options": [
+        { "id": "a", "text": "EBS data survives; instance-store data is lost" },
+        { "id": "b", "text": "Both are lost" },
+        { "id": "c", "text": "Both survive" },
+        { "id": "d", "text": "Instance-store data survives; EBS data is lost" }
+      ],
+      "answer": "a",
+      "explanation": "EBS is persistent network storage that survives a stop; instance store is ephemeral and its data is lost when the instance stops or terminates."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which workload is the BEST fit for Spot instances?",
+      "options": [
+        { "id": "a", "text": "A primary production database" },
+        { "id": "b", "text": "A fault-tolerant batch job that can retry if interrupted" },
+        { "id": "c", "text": "A stateful session server that must never restart" },
+        { "id": "d", "text": "The account's only web server" }
+      ],
+      "answer": "b",
+      "explanation": "Spot offers deep discounts but can be interrupted with a two-minute warning, so it suits fault-tolerant, stateless, retry-able work — not must-stay-up stateful services."
+    },
+    {
+      "id": "q3",
+      "type": "match-pair",
+      "prompt": "Match each EC2 pricing model to what it's best for.",
+      "pairs": [
+        { "left": "On-Demand", "right": "Short, spiky, or unpredictable workloads" },
+        { "left": "Savings Plan / Reserved", "right": "Steady, always-on baseline load" },
+        { "left": "Spot", "right": "Interruptible, flexible batch work" },
+        { "left": "Dedicated Host", "right": "Licensing or compliance needing isolated hardware" }
+      ],
+      "explanation": "On-Demand is flexible, Savings Plans/Reserved reward steady usage with a discount, Spot is cheap but interruptible, and Dedicated Hosts provide physical isolation."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "What is a custom AMI's scope?",
+      "options": [
+        { "id": "a", "text": "Global — usable in every Region automatically" },
+        { "id": "b", "text": "Region-scoped — you copy it to other Regions to use it there" },
+        { "id": "c", "text": "Tied to a single instance forever" },
+        { "id": "d", "text": "Only usable in the AZ it was created in" }
+      ],
+      "answer": "b",
+      "explanation": "AMIs are Region-scoped. To launch from an AMI in another Region you copy the AMI there first."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "An application on EC2 obtains temporary AWS credentials from an attached IAM role by querying the instance ____ service.",
+      "answer": ["metadata", "Metadata", "IMDS", "imds"],
+      "explanation": "The instance metadata service (IMDS, at 169.254.169.254) exposes instance facts and the temporary credentials of the attached IAM role; use IMDSv2 for better security."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "What is an EBS snapshot?",
+      "options": [
+        { "id": "a", "text": "A physical copy of the instance's CPU" },
+        { "id": "b", "text": "An incremental point-in-time backup of a volume, stored in S3" },
+        { "id": "c", "text": "A live mirror that replaces the volume" },
+        { "id": "d", "text": "A pricing model" }
+      ],
+      "answer": "b",
+      "explanation": "A snapshot is a point-in-time backup of an EBS volume kept in S3; after the first full snapshot, later ones store only changed blocks."
+    }
+  ]
+}

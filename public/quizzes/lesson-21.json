@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-21",
+  "lessonId": "lesson-21",
+  "title": "The AWS Well-Architected Framework",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How many pillars does the AWS Well-Architected Framework have?",
+      "options": [
+        { "id": "a", "text": "Four" },
+        { "id": "b", "text": "Five" },
+        { "id": "c", "text": "Six" },
+        { "id": "d", "text": "Ten" }
+      ],
+      "answer": "c",
+      "explanation": "There are six pillars. Sustainability was added in 2021, bringing the count from five to six."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which of these are pillars of the Well-Architected Framework? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Security" },
+        { "id": "b", "text": "Reliability" },
+        { "id": "c", "text": "Sustainability" },
+        { "id": "d", "text": "Marketing" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Security, Reliability, and Sustainability are three of the six pillars (with Operational Excellence, Performance Efficiency, and Cost Optimization). Marketing is not a pillar."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "Which pillar was added most recently, and is often forgotten?",
+      "options": [
+        { "id": "a", "text": "Security" },
+        { "id": "b", "text": "Sustainability (added in 2021)" },
+        { "id": "c", "text": "Reliability" },
+        { "id": "d", "text": "Cost Optimization" }
+      ],
+      "answer": "b",
+      "explanation": "Sustainability was added in 2021, taking the framework from five to six pillars, and is the one people most often overlook."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Does 'well-architected' mean maximizing every pillar?",
+      "options": [
+        { "id": "a", "text": "Yes — always maximize all six" },
+        { "id": "b", "text": "No — it means making deliberate trade-offs between pillars aligned to business priorities" },
+        { "id": "c", "text": "Yes, but only Security" },
+        { "id": "d", "text": "No — pillars never conflict" }
+      ],
+      "answer": "b",
+      "explanation": "The pillars can pull against each other (e.g., reliability vs cost). Being well-architected means choosing deliberate trade-offs that fit business priorities, not maxing one."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each pillar to a representative concern.",
+      "pairs": [
+        { "left": "Operational Excellence", "right": "Monitoring and continuous improvement" },
+        { "left": "Security", "right": "Least privilege and encryption" },
+        { "left": "Reliability", "right": "Recovering from failure and scaling correctly" },
+        { "left": "Cost Optimization", "right": "Right-sizing and avoiding unnecessary spend" }
+      ],
+      "explanation": "Each pillar has a focus: operations/improvement, protecting assets, correct and resilient operation, and getting the most value per dollar."
+    },
+    {
+      "id": "q6",
+      "type": "fill-blank",
+      "prompt": "A general design principle of the framework is to stop guessing ____ and instead scale with demand.",
+      "answer": ["capacity", "Capacity"],
+      "explanation": "\"Stop guessing capacity\" is a core design principle — scale elastically with demand rather than over-provisioning fixed capacity."
+    }
+  ]
+}

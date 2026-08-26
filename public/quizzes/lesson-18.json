@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-18",
+  "lessonId": "lesson-18",
+  "title": "Decoupling with SQS, SNS, and EventBridge",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "In Amazon SQS, how many consumers process each message?",
+      "options": [
+        { "id": "a", "text": "One — SQS is point-to-point" },
+        { "id": "b", "text": "Every subscriber gets a copy" },
+        { "id": "c", "text": "Exactly three" },
+        { "id": "d", "text": "None — messages are only stored" }
+      ],
+      "answer": "a",
+      "explanation": "SQS is a point-to-point queue: each message is delivered to and processed by a single consumer, then deleted."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "You need one event to reach three independent services. Which service fits best?",
+      "options": [
+        { "id": "a", "text": "A single SQS standard queue" },
+        { "id": "b", "text": "Amazon SNS (pub/sub fan-out), often to a queue per service" },
+        { "id": "c", "text": "A single EC2 instance" },
+        { "id": "d", "text": "An EBS volume" }
+      ],
+      "answer": "b",
+      "explanation": "SNS publishes to a topic and pushes a copy to every subscriber (fan-out), commonly to a separate SQS queue per service. A single SQS queue would deliver the message to only one consumer."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "What is the difference between an SQS standard queue and a FIFO queue?",
+      "options": [
+        { "id": "a", "text": "Standard has strict ordering; FIFO is unordered" },
+        { "id": "b", "text": "Standard offers high throughput with at-least-once/best-effort order; FIFO guarantees strict order and exactly-once at lower throughput" },
+        { "id": "c", "text": "They are identical" },
+        { "id": "d", "text": "FIFO cannot store messages" }
+      ],
+      "answer": "b",
+      "explanation": "Standard queues maximize throughput with at-least-once delivery and best-effort ordering; FIFO queues guarantee ordering and exactly-once processing but with lower throughput."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are benefits of decoupling components with messaging? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Work waits in the queue if a consumer is temporarily down" },
+        { "id": "b", "text": "Producers and consumers can scale independently" },
+        { "id": "c", "text": "Traffic spikes are buffered" },
+        { "id": "d", "text": "It removes the need for any IAM permissions" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Decoupling adds resilience (work waits), independent scaling, and buffering. It does not remove IAM requirements."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "Messages that repeatedly fail processing can be automatically moved to a ____-letter queue for inspection.",
+      "answer": ["dead", "Dead", "dead-letter", "DLQ"],
+      "explanation": "A dead-letter queue (DLQ) isolates messages that fail repeatedly so they can be examined instead of retrying forever or being lost."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each messaging service to what it's for.",
+      "pairs": [
+        { "left": "SQS", "right": "Buffer work for one consumer (point-to-point)" },
+        { "left": "SNS", "right": "Broadcast one message to many subscribers" },
+        { "left": "EventBridge", "right": "Route events to targets by content rules" },
+        { "left": "Dead-letter queue", "right": "Hold messages that repeatedly fail" }
+      ],
+      "explanation": "SQS buffers point-to-point, SNS fans out pub/sub, EventBridge routes events by rules, and a DLQ isolates failing messages."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-20",
+  "lessonId": "lesson-20",
+  "title": "Security in Depth: KMS, Secrets, and Encryption",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is defense in depth?",
+      "options": [
+        { "id": "a", "text": "Layering multiple independent controls so that if one fails, others still protect you" },
+        { "id": "b", "text": "Relying on a single strong firewall" },
+        { "id": "c", "text": "Encrypting data only once" },
+        { "id": "d", "text": "Giving every user admin access" }
+      ],
+      "answer": "a",
+      "explanation": "Defense in depth layers network, identity, data, and detection controls so a single failure isn't catastrophic."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Why is encrypting data at rest not sufficient on its own?",
+      "options": [
+        { "id": "a", "text": "It also encrypts data in transit automatically" },
+        { "id": "b", "text": "It protects stored data but not data moving over the network, which needs TLS/HTTPS" },
+        { "id": "c", "text": "At-rest encryption is never useful" },
+        { "id": "d", "text": "It makes the data public" }
+      ],
+      "answer": "b",
+      "explanation": "At-rest and in-transit encryption are separate protections. Data on disk can be encrypted while it's still exposed on the wire without TLS — you need both."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "In AWS KMS envelope encryption, what happens to the plaintext key material?",
+      "options": [
+        { "id": "a", "text": "It is emailed to you" },
+        { "id": "b", "text": "It never leaves KMS; KMS encrypts/decrypts data keys and logs every use" },
+        { "id": "c", "text": "It is stored in the S3 object's metadata" },
+        { "id": "d", "text": "It is printed in CloudWatch logs" }
+      ],
+      "answer": "b",
+      "explanation": "With envelope encryption, data is encrypted by a data key that KMS itself encrypts; the plaintext KMS key material never leaves KMS, and CloudTrail records every use."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "What is the advantage of AWS Secrets Manager over hardcoding a database password?",
+      "options": [
+        { "id": "a", "text": "It stores the secret outside code, serves it at runtime via IAM, and can rotate it automatically" },
+        { "id": "b", "text": "It makes the password public for convenience" },
+        { "id": "c", "text": "It deletes the database" },
+        { "id": "d", "text": "It has no benefit" }
+      ],
+      "answer": "a",
+      "explanation": "Secrets Manager keeps the secret out of the repo, delivers it at runtime through IAM, and can rotate it on a schedule so a copied credential soon expires."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each detection/protection service to its purpose.",
+      "pairs": [
+        { "left": "Amazon GuardDuty", "right": "Threat detection from analyzing logs" },
+        { "left": "AWS WAF", "right": "Filter web requests (SQLi, XSS)" },
+        { "left": "AWS Shield", "right": "DDoS protection" },
+        { "left": "Amazon Macie", "right": "Discover sensitive data in S3" }
+      ],
+      "explanation": "GuardDuty detects threats, WAF is a web application firewall, Shield defends against DDoS, and Macie finds sensitive data in S3."
+    },
+    {
+      "id": "q6",
+      "type": "fill-blank",
+      "prompt": "Data moving over the network should be protected in transit using ____ (the common encryption protocol for the web).",
+      "answer": ["TLS", "tls", "HTTPS", "https", "SSL"],
+      "explanation": "TLS (used by HTTPS) encrypts data in transit; pair it with encryption at rest for end-to-end protection."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-14",
+  "lessonId": "lesson-14",
+  "title": "AWS Lambda and Serverless",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What does 'serverless' actually mean?",
+      "options": [
+        { "id": "a", "text": "There are literally no servers involved" },
+        { "id": "b", "text": "You don't provision or manage servers — the provider runs and scales them, billed by use" },
+        { "id": "c", "text": "Your code runs on your own laptop" },
+        { "id": "d", "text": "Servers are free of charge" }
+      ],
+      "answer": "b",
+      "explanation": "Serverless means you don't provision, manage, or patch servers; AWS runs and scales them and bills you by use. Servers still exist — you just don't manage them."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is AWS Lambda's maximum execution time for a single invocation?",
+      "options": [
+        { "id": "a", "text": "60 seconds" },
+        { "id": "b", "text": "15 minutes" },
+        { "id": "c", "text": "1 hour" },
+        { "id": "d", "text": "There is no limit" }
+      ],
+      "answer": "b",
+      "explanation": "A Lambda invocation can run at most 15 minutes. Longer or heavy sustained work belongs on containers/EC2 or must be split into steps."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which statements about Lambda are correct? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "It is event-driven — invoked by triggers like S3 uploads or API Gateway requests" },
+        { "id": "b", "text": "It is stateless, so state must live in external stores" },
+        { "id": "c", "text": "You are billed by requests plus duration, and idle functions cost nothing" },
+        { "id": "d", "text": "It keeps data in memory reliably between invocations" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Lambda is event-driven, stateless, and billed by requests + duration with nothing charged when idle. It does NOT reliably retain in-memory state between invocations."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Which workload is a POOR fit for Lambda?",
+      "options": [
+        { "id": "a", "text": "Generating a thumbnail when an image is uploaded" },
+        { "id": "b", "text": "A 40-minute continuous batch job in a single invocation" },
+        { "id": "c", "text": "Handling an occasional API request" },
+        { "id": "d", "text": "Reacting to a queue message" }
+      ],
+      "answer": "b",
+      "explanation": "A 40-minute continuous job exceeds Lambda's 15-minute limit; it should run on containers/EC2 or be decomposed into steps. The others are short, event-driven tasks that fit Lambda."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "The startup latency when a new Lambda execution environment must initialize is called a ____ start.",
+      "answer": ["cold", "Cold"],
+      "explanation": "A cold start is the extra latency to initialize a fresh execution environment after idle or when scaling; provisioned concurrency keeps environments warm to avoid it."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each service to its role in a serverless application.",
+      "pairs": [
+        { "left": "API Gateway", "right": "Exposes an HTTP API that invokes the backend" },
+        { "left": "Lambda", "right": "Runs the application logic on demand" },
+        { "left": "DynamoDB", "right": "Stores the data, serverless" },
+        { "left": "IAM execution role", "right": "Grants the function its permissions" }
+      ],
+      "explanation": "API Gateway is the HTTP front door, Lambda holds the logic, DynamoDB stores data, and the execution role gives the function least-privilege permissions."
+    }
+  ]
+}

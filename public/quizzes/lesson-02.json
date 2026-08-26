@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-02",
+  "lessonId": "lesson-02",
+  "title": "AWS Global Infrastructure",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How do Regions and Availability Zones relate?",
+      "options": [
+        { "id": "a", "text": "A Region contains multiple Availability Zones" },
+        { "id": "b", "text": "An Availability Zone contains multiple Regions" },
+        { "id": "c", "text": "They are two words for the same thing" },
+        { "id": "d", "text": "A Region is a single data center inside an AZ" }
+      ],
+      "answer": "a",
+      "explanation": "A Region is an isolated geographic area that contains multiple Availability Zones; each AZ is one or more isolated data centers within that Region."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Why should a production workload run in more than one Availability Zone?",
+      "options": [
+        { "id": "a", "text": "It makes the app run a different programming language" },
+        { "id": "b", "text": "AZs fail independently, so multiple AZs remove the single point of failure" },
+        { "id": "c", "text": "AWS charges less for using more AZs" },
+        { "id": "d", "text": "A single AZ cannot run more than one server" }
+      ],
+      "answer": "b",
+      "explanation": "Availability Zones are isolated and fail independently, so spreading a workload across two or more keeps it available even if one AZ has an outage."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "prompt": "Which services are GLOBAL rather than Regional? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "IAM" },
+        { "id": "b", "text": "Amazon Route 53" },
+        { "id": "c", "text": "Amazon EC2" },
+        { "id": "d", "text": "Amazon CloudFront" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "IAM, Route 53, and CloudFront are global. EC2 is Regional — an instance lives in one Region and AZ."
+    },
+    {
+      "id": "q4",
+      "type": "fill-blank",
+      "prompt": "AWS sites that cache content close to users for CloudFront (rather than running your servers) are called ____ locations.",
+      "answer": ["edge", "Edge"],
+      "explanation": "Edge locations cache and deliver content near users for CloudFront and answer DNS for Route 53; they do not host your compute."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which factors should drive your choice of Region? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Latency to your users" },
+        { "id": "b", "text": "Cost, which varies by Region" },
+        { "id": "c", "text": "Compliance / data-residency requirements" },
+        { "id": "d", "text": "Whether the service is available in that Region" }
+      ],
+      "answer": ["a", "b", "c", "d"],
+      "explanation": "All four matter: pick a Region near your users, mind that prices differ by Region, respect data-residency law, and confirm the service exists there."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "You store backups only in us-east-1. Are they automatically copied to another Region for safety?",
+      "options": [
+        { "id": "a", "text": "Yes, AWS mirrors all data across Regions by default" },
+        { "id": "b", "text": "No — Regions are isolated; cross-Region replication must be configured on purpose" },
+        { "id": "c", "text": "Yes, but only for S3" },
+        { "id": "d", "text": "Only if the backup is larger than 5 TB" }
+      ],
+      "answer": "b",
+      "explanation": "Regions are isolated and data stays put by default. Any cross-Region copy for disaster recovery is something you must set up yourself."
+    }
+  ]
+}

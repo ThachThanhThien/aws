@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-13",
+  "lessonId": "lesson-13",
+  "title": "Databases on AWS: RDS and DynamoDB",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the difference between RDS Multi-AZ and a read replica?",
+      "options": [
+        { "id": "a", "text": "Multi-AZ is a synchronous standby for automatic failover (availability); a read replica is asynchronous and used to scale reads" },
+        { "id": "b", "text": "They are the same feature with different names" },
+        { "id": "c", "text": "Multi-AZ scales reads; read replicas provide failover" },
+        { "id": "d", "text": "Both are only for backups" }
+      ],
+      "answer": "a",
+      "explanation": "Multi-AZ keeps a synchronous standby in another AZ for automatic failover and is not readable. Read replicas are asynchronous copies used to scale read traffic (and can be cross-Region)."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which best describes Amazon DynamoDB?",
+      "options": [
+        { "id": "a", "text": "A serverless NoSQL key-value/document store with single-digit-ms latency, designed around access patterns" },
+        { "id": "b", "text": "A managed relational database with joins and SQL" },
+        { "id": "c", "text": "A virtual server you patch yourself" },
+        { "id": "d", "text": "An object storage service" }
+      ],
+      "answer": "a",
+      "explanation": "DynamoDB is a serverless NoSQL database (key-value and document) with single-digit-millisecond latency and automatic scaling; you model tables around access patterns and there are no joins."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "When should you choose a relational database (RDS) over DynamoDB?",
+      "options": [
+        { "id": "a", "text": "When you need joins, ad-hoc queries, and ACID transactions across related tables" },
+        { "id": "b", "text": "When you want to avoid managing capacity at massive scale" },
+        { "id": "c", "text": "When you only ever look up items by a single key" },
+        { "id": "d", "text": "Never — DynamoDB is always better" }
+      ],
+      "answer": "a",
+      "explanation": "Relational engines fit structured, related data needing joins, flexible queries, and transactions. DynamoDB fits simple key-based access at large scale."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which tasks does a managed database like RDS handle for you? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Patching the database engine and OS" },
+        { "id": "b", "text": "Automated backups" },
+        { "id": "c", "text": "Automatic failover with Multi-AZ" },
+        { "id": "d", "text": "Designing your data model and access rules" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "RDS manages patching, backups, and failover. You still design the data model and control access — that stays your responsibility."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "In DynamoDB, each item is identified by a primary key consisting of a ____ key (and an optional sort key).",
+      "answer": ["partition", "Partition"],
+      "explanation": "A DynamoDB primary key is a partition key, optionally combined with a sort key; you design tables around how you'll query by these keys."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Do you get operating-system access to an Amazon RDS instance?",
+      "options": [
+        { "id": "a", "text": "Yes, full SSH access like EC2" },
+        { "id": "b", "text": "No — RDS is managed, so you interact through the database, not the OS" },
+        { "id": "c", "text": "Only on weekends" },
+        { "id": "d", "text": "Only for MySQL" }
+      ],
+      "answer": "b",
+      "explanation": "RDS is a managed service: AWS runs the host and engine, so there's no OS access — a trade-off for AWS handling patching and maintenance."
+    }
+  ]
+}

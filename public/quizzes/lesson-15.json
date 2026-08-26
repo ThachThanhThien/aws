@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-15",
+  "lessonId": "lesson-15",
+  "title": "Monitoring with CloudWatch and CloudTrail",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the key difference between CloudWatch and CloudTrail?",
+      "options": [
+        { "id": "a", "text": "CloudWatch tells you what is happening (metrics/health); CloudTrail records who did what (API audit)" },
+        { "id": "b", "text": "They are the same service" },
+        { "id": "c", "text": "CloudWatch is for audit; CloudTrail is for metrics" },
+        { "id": "d", "text": "CloudWatch stores data in S3; CloudTrail does not store anything" }
+      ],
+      "answer": "a",
+      "explanation": "CloudWatch is monitoring (metrics, alarms, logs) answering 'what is happening?'; CloudTrail records API calls answering 'who did what, when?' for audit."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What does a CloudWatch alarm do when a metric crosses its threshold?",
+      "options": [
+        { "id": "a", "text": "Nothing — it only stores the value" },
+        { "id": "b", "text": "It changes state (e.g., to ALARM) and can trigger actions like an SNS notification or Auto Scaling" },
+        { "id": "c", "text": "It deletes the resource" },
+        { "id": "d", "text": "It creates a new AWS account" }
+      ],
+      "answer": "b",
+      "explanation": "An alarm watches a metric against a threshold, moves between OK/ALARM/INSUFFICIENT_DATA, and can trigger actions such as SNS notifications or scaling."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "Where would you look to find WHO deleted an AWS resource and when?",
+      "options": [
+        { "id": "a", "text": "CloudWatch metrics" },
+        { "id": "b", "text": "CloudTrail" },
+        { "id": "c", "text": "The EC2 dashboard" },
+        { "id": "d", "text": "The billing console only" }
+      ],
+      "answer": "b",
+      "explanation": "CloudTrail records the API call, the IAM identity that made it, and the timestamp — the audit trail for who did what."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are components of CloudWatch? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Metrics" },
+        { "id": "b", "text": "Alarms" },
+        { "id": "c", "text": "Logs" },
+        { "id": "d", "text": "A record of every API call for audit" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "CloudWatch provides metrics, alarms, logs, and dashboards. The audit record of API calls is CloudTrail, a separate service."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "A CloudWatch alarm can be in the states OK, INSUFFICIENT_DATA, or ____.",
+      "answer": ["ALARM", "alarm", "Alarm"],
+      "explanation": "An alarm's states are OK, ALARM, and INSUFFICIENT_DATA; entering ALARM can trigger its configured actions."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each need to the right service.",
+      "pairs": [
+        { "left": "Alert when latency is high", "right": "CloudWatch alarm" },
+        { "left": "Audit who changed a policy", "right": "CloudTrail" },
+        { "left": "Search application log lines", "right": "CloudWatch Logs" },
+        { "left": "Track resource config over time", "right": "AWS Config" }
+      ],
+      "explanation": "CloudWatch alarms alert on metrics, CloudTrail audits API calls, CloudWatch Logs stores/queries logs, and AWS Config tracks configuration and compliance."
+    }
+  ]
+}

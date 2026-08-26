@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-04",
+  "lessonId": "lesson-04",
+  "title": "The Shared Responsibility Model",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "In the shared responsibility model, what is AWS responsible for?",
+      "options": [
+        { "id": "a", "text": "Security OF the cloud — the infrastructure, hardware, and managed-service software" },
+        { "id": "b", "text": "Security IN the cloud — your data and access configuration" },
+        { "id": "c", "text": "Everything, including your data" },
+        { "id": "d", "text": "Only your application code" }
+      ],
+      "answer": "a",
+      "explanation": "AWS secures the cloud itself: physical data centers, hardware, networking, and the software of managed services. The customer secures what they put in the cloud."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each task to who is responsible.",
+      "pairs": [
+        { "left": "Patching the EC2 guest OS", "right": "Customer" },
+        { "left": "Physical data-center security", "right": "AWS" },
+        { "left": "Setting an S3 bucket policy", "right": "Customer" },
+        { "left": "Patching the hypervisor/host", "right": "AWS" }
+      ],
+      "explanation": "The customer owns the guest OS and access configuration; AWS owns the physical facilities and the virtualization/host layer."
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "prompt": "An S3 bucket is misconfigured as public and data leaks. Whose responsibility is that?",
+      "options": [
+        { "id": "a", "text": "AWS, because it runs S3" },
+        { "id": "b", "text": "The customer, because access configuration and data are theirs to secure" },
+        { "id": "c", "text": "Nobody — it's an accident" },
+        { "id": "d", "text": "The internet service provider" }
+      ],
+      "answer": "b",
+      "explanation": "Even though AWS runs S3 securely, the bucket's access configuration and the data are the customer's responsibility. Misconfiguration is the leading cause of cloud exposure."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which items are always the CUSTOMER's responsibility, regardless of service? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Their data" },
+        { "id": "b", "text": "Their IAM users, roles, and policies (access configuration)" },
+        { "id": "c", "text": "The physical security of the data centers" },
+        { "id": "d", "text": "Choosing their encryption settings" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Data, access configuration, and encryption choices are always the customer's. Physical data-center security is always AWS's."
+    },
+    {
+      "id": "q5",
+      "type": "fill-blank",
+      "prompt": "Compared with EC2, a fully managed service like S3 or Lambda leaves the customer the ____ amount of infrastructure work (one word: least or most).",
+      "answer": ["least", "Least"],
+      "explanation": "Serverless/fully managed services leave the customer the least infrastructure work, because AWS runs and patches all of it — though data and access are still the customer's."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "What is a 'shared control' in the model?",
+      "options": [
+        { "id": "a", "text": "A control only AWS performs" },
+        { "id": "b", "text": "A duty both parties handle at different layers, such as patch management" },
+        { "id": "c", "text": "A control that is never needed" },
+        { "id": "d", "text": "A billing feature" }
+      ],
+      "answer": "b",
+      "explanation": "Shared controls are split by layer: AWS patches the infrastructure while the customer patches the guest OS and apps; configuration management and training are similar."
+    }
+  ]
+}
