@@ -43,11 +43,6 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          # Create the Pages site (build_type=workflow) on first run if it isn't
-          # enabled yet, using the workflow's pages:write token — so no manual
-          # Settings step is needed to bootstrap Pages.
-          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
